@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="kr.co.bigpic.img">
+
+	<select id="selectAllImg"  resultType="imgDto">
+		select * from images
+		order by imgno desc
+	</select>
+
+	<insert id="insertImg" parameterType="imgDto" >
+      insert into images
+      values(imgno_seq.nextval, #{usernum}, #{filedir}, #{filename}, #{cname}, #{imgname})
+   </insert>
+   <select id="selectOneImg" parameterType="int" resultType="imgDto">
+   		select * from images
+   		where imgno = #{imgno}
+   </select>
+   
+   <select id="selectSomeImg" parameterType="String" resultType="imgDto">
+		select * from images
+		where cname = #{cname}
+	</select>
+	
+	<select id="searchImg" resultType="imgDto" parameterType="String">
+      select *
+      from images
+      where imgname like '%' || #{imgname} || '%'
+   </select>
+
+</mapper>

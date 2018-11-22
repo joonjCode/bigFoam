@@ -1,0 +1,6 @@
+/* .wrapper { width:200px; margin:50px auto; } */
+.inline-form{display: grid;}
+.char-textarea { width:550px; height:150px; resize:none; }
+.char-count { font-weight:bold; }
+h4 { font-weight:normal; }
+textarea{resize: none;}

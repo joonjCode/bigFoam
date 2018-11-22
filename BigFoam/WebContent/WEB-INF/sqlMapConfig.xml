@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+	<typeAliases>
+		<typeAlias type="kr.co.bigpic.users.dto.UsersDto" alias="usersDto" />
+		<typeAlias type="kr.co.bigpic.users.dto.ImgDto" alias="imgDto" />
+	</typeAliases>
+
+	<environments default="dev">
+		<environment id="dev">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<mappers>
+		<mapper resource="kr/co/bigpic/users/mapper/usersMapper.xml"></mapper>
+		<mapper resource="kr/co/bigpic/users/mapper/imgMapper.xml"></mapper>
+		<mapper resource="kr/co/bigpic/users/mapper/adminMapper.xml"></mapper>
+	</mappers>
+</configuration>
+  

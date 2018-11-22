@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+    <mapper namespace="kr.co.bigpic.admin">
+    <!-- 회원 -->
+    <select id="selectUserAll" resultType="usersDto">
+        SELECT id, name, email, usernum_pk, signup_date 
+        FROM users
+        ORDER BY usernum_pk asc
+     </select>
+       
+     <delete id="deleteOne" parameterType="int">
+        DELETE users
+        WHERE usernum_pk = #{usernum_pk}
+     </delete>
+     
+     <!-- 이미지 -->
+     <select id="selectImgList" resultType="imgDto">
+        SELECT imgno, usernum, filedir
+        FROM images
+        ORDER BY usernum
+     </select>
+     
+     <select id="selectOneImg" resultType="int">
+        SELECT *
+        FROM images
+        WHERE imgno = #{imgno}
+     </select>
+        
+     <delete id="deleteImgOne" parameterType="int">
+        DELETE images
+        WHERE imgno = #{imgno}
+     </delete>
+     
+  
+  </mapper>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.bigpic.users">
+	<select id="insertUser" parameterType="usersDto" >
+      INSERT INTO users
+      VALUES ( #{id}, #{pwd}, #{repwd}, #{name}, #{email}, sysdate, usernum_pk_seq.NEXTVAL)
+   </select>
+	
+	<select id="isValidUser" parameterType="String" resultType="usersDto">
+        SELECT id, pwd, repwd, name, email, to_char(signup_date,'yyyy/mm/dd') signup_date, usernum_pk
+      	FROM users 
+      	WHERE id = #{id} and pwd = #{pwd}
+     </select>
+     
+     <select id="isExistId" parameterType="String" resultType="Integer">
+      SELECT COUNT(*) FROM users
+      WHERE id = #{id}
+	</select>
+     
+    
+     
+     
+   
+</mapper>
